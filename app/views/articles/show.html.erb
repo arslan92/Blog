@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @article.description %>
+</p>
+
+<p>
+  <strong>Created Date:</strong>
+  <%= @article.created_at %>
+</p>
+
+<p>
+  <strong>Last Updated:</strong>
+  <%= @article.updated_at %>
+</p>
+
+<% if @comments.present? %>
+	<br>
+	<h3>Comments</h3>
+	<% @comments.each do |comment| %>
+		<p>
+			<strong>Author:</strong>
+			<%= comment.author %>
+		</p>
+		<p>
+			<strong>Comment:</strong>
+			<%= comment.description %>
+		</p>
+		<hr style="width: 20%; float: left;">
+		<div style="clear: both;"></div>
+	<% end %>
+<% end %>
+
+<br>
+<h3>Write a Comment</h3>
+
+<%= render :partial => 'comments/form' %>
+
+<br><br>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>

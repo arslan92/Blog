@@ -1,0 +1,13 @@
+<h1>Articles</h1>
+
+    <% @articles.each do |article| %>
+        <h2><%= link_to article.title, article_url(article.id) %></h2>
+        <p><%= truncate(article.description, :length => 180, :omission => '...(continued)') %></p><br><br>
+        <%#= link_to 'Show', article %>
+        <%#= link_to 'Edit', edit_article_path(article) %>
+        <%#= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+
+<br>
+
+<%= link_to 'New Article', new_article_path %>

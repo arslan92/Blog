@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+
+  root "articles#index"
+
+  resources :comments
+
+  resources :articles do
+    collection do
+      #get 'info' => "articles#info" , :constraints => {:user_agent => /Firefox/}
+      get '/info(/:year(/:month(/:day)))'  => "articles#info" , :constraints => { :year => /\d{4}/ , :month => /\d{2}/, :day => /\d{2}/ , :user_agent => /Firefox/ , :protocol => /http/ , :host => /localhost/ }
+    end  
+  end
+
+  #get "arslan" => proc {|env| [200,{},"Hello  user"] }
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
